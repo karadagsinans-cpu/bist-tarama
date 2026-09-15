@@ -1,0 +1,24 @@
+name: BIST ADX Günlük Tarama
+
+on:
+  schedule:
+    - cron: '15 15 * * 1-5' # Hafta içi her gün TSİ 18:15
+  workflow_dispatch: # İstediğiniz an elle çalıştırma butonu
+
+jobs:
+  scan:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Kodu Çek
+        uses: actions/checkout@v3
+
+      - name: Python Kur
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+      - name: Kütüphaneleri Yükle
+        run: pip install -r requirements.txt
+
+      - name: Taramayı Çalıştır
+        run: python tarama.py
