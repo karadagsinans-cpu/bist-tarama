@@ -2,3 +2,4 @@ pandas
 pandas_ta
 yfinance
 requests
+numpy<2.0.0
